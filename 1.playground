@@ -1,0 +1,60 @@
+import Foundation
+
+// ДЗ 1
+
+// 1. Есть произвольный массив чисел, найти максимальное и минимальное 
+число и поменять их местами
+
+var array: Array<Int> = [4, 0, -8, 14, 3, 67, -9, 34, 7]
+
+var minTuple = (value: array[0], index: 0)
+var maxTuple = (value: array[0], index:0)
+
+for index in 1..<array.count {
+    let value = array[index]
+    
+    if (value < minTuple.value) {
+        minTuple = (value, index)
+    }
+    if (value > maxTuple.value) {
+        maxTuple = (value, index)
+    }
+}
+
+// print(array)
+
+array[maxTuple.index] = minTuple.value
+array[minTuple.index] = maxTuple.value
+
+// print(array)
+
+
+// 2. Есть два массива символов - собрать результирующее множество из 
+символов, что повторяются в 2х массивах
+
+var set1: Set<Character> = ["@", "t", "à", "l", ",", "ù", "%", ":"]
+
+var set2: Set<Character> = ["ç", "q", "(", "^", "g", "/", ":", ","]
+
+var intersect = set1.intersection(set2)
+
+// print(intersect)
+
+// 3. Создать словарь с соотношением имя (ключ) пользователя - пароль 
+(значение), получить из словаря все имена, пароли которых длиннее 10 
+символов
+
+
+var dict: Dictionary<String, String> = ["username1": "kjdfkgjbdkjfè§'(è", 
+"username2": "qwerty", "username3": "", "username5": "verylongpassword", 
+"username6": "1234567890", "username7": "12345678910"]
+
+var users: Array<String> = []
+
+for (user, password) in dict {
+    if (password.count > 10) {
+        users.append(user)
+    }
+}
+
+print(users)
