@@ -1,0 +1,55 @@
+import Foundation
+
+// ДЗ 3
+
+// Написать класс, ответственный за вычисления - класс для инициализации 
+принимает 2 переменных - числа, по умолчанию числа равны нулю.
+// Класс умеет посредством методов выполнять стандартные арифметические 
+операции - сложение / вычитание / умножение / деление.
+// Каждая из функций возвращает результат
+
+class Calculations {
+    
+    var x: Float = 0;
+    var y: Float = 0;
+    
+    convenience init() {
+        self.init(x: 0, y: 0)
+    }
+    
+    init(x: Float = 0, y: Float = 0) {
+        self.x = x;
+        self.y = y;
+    }
+    
+    func description() -> String {
+        return "Numbers: \(self.x) and \(self.y)"
+    }
+    
+    func addition() -> Float {
+        return self.x + self.y
+    }
+    
+    func substraction() -> Float {
+        return self.x - self.y
+    }
+    
+    func multiplation() -> Float {
+        return self.x * self.y
+    }
+    
+    func division() -> Float {
+        return self.x / self.y
+    }
+    
+}
+
+let x: Float = 17.4
+let y: Float = 9.1
+
+let calc = Calculations(x: x, y: y)
+print("\(calc.description())")
+print("\(x) + \(y) = \(calc.addition())")
+print("\(x) - \(y) = \(calc.substraction())")
+print("\(x) * \(y) = \(calc.multiplation())")
+print("\(x) / \(y) = \(calc.division())")
