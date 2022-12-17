@@ -1,0 +1,76 @@
+import Foundation
+
+// ДЗ 3-2
+
+// Определить сущности геометрических фигур (например треугольник, 
+квадрат, круг и тд), реализовать функцию описания у фигур, реализовать 
+общий класс фигура - который содержит в себе описание, количество углов, 
+функцию draw() (рисовать не нужно, можно просто вывести в консоль 
+что-нибудь)- переопределить соотвествующие методы у сабклассов.
+
+class Figure {
+    
+    var name: String;
+    var corners: Int;
+    
+    init(name: String, corners: Int) {
+        self.name = name
+        self.corners = corners
+    }
+    
+    func description() -> String {
+        return "This is a \(self.name) with \(self.corners) corners.";
+    }
+    
+    func draw() {
+        print("()")
+    }
+    
+}
+
+class Square: Figure {
+    
+    init() {
+        super.init(name: "Square", corners: 4)
+    }
+    
+    override func draw() {
+        print("▢")
+    }
+    
+}
+
+class Triangle: Figure {
+    
+    init() {
+        super.init(name: "Triangle", corners: 3)
+    }
+    
+    override func draw() {
+        print("Δ")
+    }
+}
+
+class Circle: Figure {
+    
+    init() {
+        super.init(name: "Circle", corners: 0)
+    }
+    
+    override func draw() {
+        print("o")
+    }
+    
+}
+
+var square = Square()
+print(square.description())
+square.draw()
+              
+var triangle = Triangle()
+print(triangle.description())
+triangle.draw()
+              
+var circle = Circle()
+print(circle.description())
+circle.draw()
