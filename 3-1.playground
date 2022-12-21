@@ -2,44 +2,44 @@ import Foundation
 
 // ДЗ 3
 
-// Написать класс, ответственный за вычисления - класс для инициализации 
-принимает 2 переменных - числа, по умолчанию числа равны нулю.
-// Класс умеет посредством методов выполнять стандартные арифметические 
-операции - сложение / вычитание / умножение / деление.
+// Написать класс, ответственный за вычисления - класс для инициализации
+// принимает 2 переменных - числа, по умолчанию числа равны нулю.
+// Класс умеет посредством методов выполнять стандартные арифметические
+// операции - сложение / вычитание / умножение / деление.
 // Каждая из функций возвращает результат
 
 class Calculations {
     
-    var x: Float = 0;
-    var y: Float = 0;
+    private var x: Float
+    private var y: Float
+    
+    init(x: Float, y: Float) {
+        self.x = x
+        self.y = y
+    }
     
     convenience init() {
         self.init(x: 0, y: 0)
     }
     
-    init(x: Float = 0, y: Float = 0) {
-        self.x = x;
-        self.y = y;
-    }
-    
     func description() -> String {
-        return "Numbers: \(self.x) and \(self.y)"
+        "Numbers: \(self.x) and \(self.y)"
     }
     
     func addition() -> Float {
-        return self.x + self.y
+        self.x + self.y
     }
     
     func substraction() -> Float {
-        return self.x - self.y
+        self.x - self.y
     }
     
     func multiplation() -> Float {
-        return self.x * self.y
+        self.x * self.y
     }
     
     func division() -> Float {
-        return self.x / self.y
+        self.x / self.y
     }
     
 }
