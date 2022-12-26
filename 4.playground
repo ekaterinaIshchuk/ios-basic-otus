@@ -1,0 +1,57 @@
+import Foundation
+
+// ДЗ 4
+
+// Реализовать модель данных пользователя - структуру (с 2-3 полями), 
+создать массив пользователей, сделать какое-то поля (например - имя) - 
+изменяемым.
+
+struct User {
+    var firstname: String
+    var lastname: String
+    var age: Int
+    
+    mutating func setLastname(_ lastname: String) {
+        self.lastname = lastname
+    }
+    
+    func description() -> String {
+        "The user \(self.firstname) \(self.lastname) is \(self.age) years 
+old."
+    }
+    
+}
+
+// Создать массив пользователей (3-4 элемента), вывести в консоль описание 
+пользователя,
+
+var user1 = User(firstname: "Ivan", lastname: "Ivanov", age: 30)
+var user2 = User(firstname: "Maria", lastname: "Santos", age: 36)
+var user3 = User(firstname: "Greg", lastname: "Truval", age: 16)
+
+var users: [User] = [
+    user1,
+    user2,
+    user3
+]
+
+for user in users {
+    print(user.description())
+}
+
+//  поменять имя для второго пользователя в массиве, снова вывести 
+описание для каждого пользователя.
+
+for (index, user) in users.enumerated() {
+    if (index == 1) {
+        var newUser = user
+        newUser.setLastname("Radriges")
+        users[1] = newUser
+        break
+    }
+}
+
+
+for user in users {
+    print(user.description())
+}
