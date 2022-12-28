@@ -1,0 +1,83 @@
+import Foundation
+
+// ДЗ 5
+
+// Написать перечисление, содержащее в себе устройства apple (для упрощения можно взять 5-7 устройств, включающий iPhone, iPad), перечисление должно поддерживать протокол CustomStringConvertible (https://developer.apple.com/documentation/swift/customstringconvertible) и выводить свое описание, также должны быть реализованы свойства:
+
+// размер экрана в пикселях (можно использовать CGSize структуру или написать свою - с height width параметрами)
+// булевая (Bool) переменная отвечающая iPad это или нет
+
+struct Size: CustomStringConvertible {
+    var height: Int
+    var width: Int
+    
+    var description: String {
+        return "Height: \(self.height)px, width: \(self.height)px"
+    }
+}
+
+enum AppleDevice: CustomStringConvertible {
+    case iphone
+    case iphonepro
+    case ipad
+    case ipadpro
+    case macbook
+    case watch
+    
+    
+    var description: String {
+        switch self {
+        case .iphone:
+            return "iPhone"
+        case .ipad:
+            return "iPad"
+        case .iphonepro:
+            return "iPhone Pro"
+        case .macbook:
+            return "MacBook"
+        case .watch:
+            return "Watch"
+        case .ipadpro:
+            return "iPad Pro"
+        }
+    }
+    
+    var isIpad: Bool {
+        switch self {
+        case .ipad, .ipadpro:
+            return true
+        case .iphone, .iphonepro, .macbook, .watch:
+            return false
+        }
+    }
+    
+    var screenSize: Size {
+        switch self {
+        case .iphone:
+            return Size(height:2000, width:1000)
+        case .ipad:
+            return Size(height:3000, width:2000)
+        case .iphonepro:
+            return Size(height:2500, width:1500)
+        case .macbook:
+            return Size(height:4500, width:3400)
+        case .watch:
+            return Size(height:100, width:50)
+        case .ipadpro:
+            return Size(height:3500, width:2500)
+        }
+    }
+}
+
+let devices: Array<AppleDevice> = [
+   .iphone,
+   .iphonepro,
+   .macbook,
+   .ipad,
+   .watch,
+   .ipadpro
+]
+
+for device in devices {
+    print("This device is \(device.description). \(device.screenSize). This is\(device.isIpad ? "" : " not") an iPad.")
+}
